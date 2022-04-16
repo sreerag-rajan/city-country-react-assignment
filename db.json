@@ -1,4 +1,30 @@
 {
-    "countries":[],
-    "cities":[]
+  "countries": [
+    {
+      "country": "India",
+      "id": 1
+    },
+    {
+      "country": "Sri Lanka",
+      "id": 2
+    },
+    {
+      "country": "Bangladesh",
+      "id": 3
+    }
+  ],
+  "cities": [
+    {
+      "city": "Colombo",
+      "population": "14000000",
+      "country": "Sri Lanka",
+      "id": 2
+    },
+    {
+      "city": "Delhi",
+      "population": "19000000",
+      "country": "India",
+      "id": 3
+    }
+  ]
 }
