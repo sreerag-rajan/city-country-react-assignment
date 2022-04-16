@@ -1,6 +1,9 @@
 .App {
   text-align: center;
 }
+h1{
+  text-decoration: underline;
+}
 
 nav{
   display: flex;

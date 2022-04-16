@@ -4,6 +4,7 @@ import { deleteCities, getCitiesData } from "../Redux/city/city.action";
 import { Filter } from "./Components/Filter";
 import { Sort } from "./Components/Sort";
 import styled from "styled-components"
+import { EditCities } from "../EditCities/EditCities";
 
 
 export const Home = ()=>{
@@ -38,12 +39,14 @@ export const Home = ()=>{
         justify-content: flex-end;
         padding: 10px 30px;
         margin-right: 40px;
-        gap: 20px
+        gap: 20px;
     `
 
     const cities = useSelector((store)=>store.cities.cities);
     const dispatch = useDispatch()
     const [deleteStatus, setDeleteStatus] = useState(false);
+    const [editStatus, setEditStatus] = useState(false)
+    const [editCity, setEditCity] = useState({})
 
     useEffect(()=>{
         dispatch(getCitiesData());
@@ -55,6 +58,14 @@ export const Home = ()=>{
         setDeleteStatus(false);
     }
 
+    const handleEdit = (city)=>{
+        setEditStatus(true);
+        setEditCity(city)
+    }
+
+    const toggleEditStatus = ()=>{
+        setEditStatus(!editStatus)
+    }
     return(
         <div>
             <h1>Cities and Countries</h1>
@@ -80,7 +91,9 @@ export const Home = ()=>{
                             <td>{el.country}</td>
                             <td>{el.city}</td>
                             <td>{el.population}</td>
-                            <td> <Edit>Edit</Edit> </td>
+                            <td> <Edit onClick={()=>{
+                                handleEdit(el);
+                            }}>Edit</Edit> </td>
                             <td> {deleteStatus?"Deleting":<Delete onClick={()=>{
                                 handleDelete(el.id)
                             }}>Delete</Delete>} </td>
@@ -88,6 +101,7 @@ export const Home = ()=>{
                     })}
                 </tbody>
             </table>
+            {editStatus&&<EditCities city={editCity} toggleEditStatus={toggleEditStatus}/>}
         </div>
     )
 }
