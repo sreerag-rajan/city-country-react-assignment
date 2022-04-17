@@ -6,13 +6,13 @@ export const getCities = (payload)=>({type:GET_CITIES, payload})
 
 
 export const getCitiesData = ()=>(dispatch)=>{
-    axios.get(`http://localhost:8080/cities`).then(({data})=>{
+    axios.get(`https://city-country-backend.herokuapp.com/cities`).then(({data})=>{
         dispatch(getCities(data))
     })
 }
 
 export const filterCities = (country)=>(dispatch)=>{
-    axios.get(`http://localhost:8080/cities`).then(({data})=>{
+    axios.get(`https://city-country-backend.herokuapp.com/cities`).then(({data})=>{
         if(country==="all"){
             dispatch(getCities(data));
             return;
@@ -28,7 +28,7 @@ export const filterCities = (country)=>(dispatch)=>{
 }
 
 export const deleteCities = (id)=>(dispatch)=>{
-    axios.delete(`http://localhost:8080/cities/${id}`).then(()=>{
+    axios.delete(`https://city-country-backend.herokuapp.com/cities/${id}`).then(()=>{
         dispatch(getCitiesData())
     })
 }

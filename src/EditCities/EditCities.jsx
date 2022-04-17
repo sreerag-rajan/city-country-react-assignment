@@ -42,7 +42,7 @@ export const EditCities = ({city, toggleEditStatus})=>{
 
     const handleSubmit = (e)=>{
         e.preventDefault();
-        axios.patch(`http://localhost:8080/cities/${city.id}`,formData).then(({data})=>{
+        axios.patch(`https://city-country-backend.herokuapp.com/cities/${city.id}`,formData).then(({data})=>{
             console.log(data);
             setFormData({
                 city:"",

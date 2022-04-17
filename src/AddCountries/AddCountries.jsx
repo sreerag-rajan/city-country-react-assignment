@@ -12,7 +12,7 @@ export const AddCountries = ()=>{
     }
     const handleSubmit = (e)=>{
         e.preventDefault();
-        axios.post(`http://localhost:8080/countries`,{country}).then(({data})=>{
+        axios.post(`https://city-country-backend.herokuapp.com/countries`,{country}).then(({data})=>{
             console.log(data);
             setcountry("");
             dispatch(getCountriesData());

@@ -22,10 +22,10 @@ export const AddCities = ()=>{
         const {name, value} = e.target;
         setFormData({...formData, [name]:value})
     }
-
+//https://city-country-backend.herokuapp.com/countries
     const handleSubmit = (e)=>{
         e.preventDefault();
-        axios.post(`http://localhost:8080/cities`,formData).then(({data})=>{
+        axios.post(`https://city-country-backend.herokuapp.com/cities`,formData).then(({data})=>{
             console.log(data);
             setFormData({
                 city:"",
